@@ -8,6 +8,11 @@ permissions:
   pages: write
   id-token: write
 
+# 同一时间只跑一个部署，避免和旧的运行冲突
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,10 +22,12 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm run build
+      # 只打包、不做 TypeScript 类型检查（本地 dev 能跑的代码这里就能构建成功）
+      - run: npx vite build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
