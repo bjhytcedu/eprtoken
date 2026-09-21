@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+/* ===================== EPR Token 引流站设计系统 ===================== */
+@property --ga {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+:root {
+  --epr-bg: #0a1f2b;            /* 深青主背景 */
+  --epr-bg-deep: #071722;
+  --epr-panel: #0f2a38;
+  --epr-line: rgba(120, 200, 210, 0.14);
+  --epr-text: #cbe2e4;          /* 暗区正文 */
+  --epr-text-dim: #7fa3a8;
+  --epr-light: #f5f8f9;         /* 亮区背景 */
+  --epr-light-text: #16323d;
+  --epr-green: #47E27C;
+  --epr-cyan: #4ED3FB;
+  --epr-purple: #b350b3;
+  --epr-blue: #2f8fd0;
+  --epr-gold: #e8c84a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--epr-bg);
+  color: var(--epr-text);
+  font-family: 'Inter', -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: 'Poppins', 'Inter', -apple-system, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+}
+.font-code {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', 'PingFang SC', 'Microsoft YaHei', monospace;
+}
+
+/* Hero 层叠径向渐变背景 */
+.epr-hero-bg {
+  background:
+    radial-gradient(60% 50% at 15% 10%, hsla(152, 72%, 35%, 0.28), transparent 60%),
+    radial-gradient(50% 45% at 85% 15%, hsla(199, 95%, 40%, 0.30), transparent 60%),
+    radial-gradient(45% 40% at 75% 85%, hsla(280, 60%, 35%, 0.22), transparent 60%),
+    radial-gradient(40% 40% at 20% 90%, hsla(199, 80%, 30%, 0.20), transparent 60%),
+    hsl(201, 63%, 11%);
+}
+
+/* 渐变标题文字 */
+.epr-grad-text {
+  background: linear-gradient(92deg, var(--epr-green) 10%, var(--epr-cyan) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 网格底纹 */
+.epr-grid-lines {
+  background-image:
+    linear-gradient(var(--epr-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--epr-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(70% 70% at 50% 40%, #000 30%, transparent 100%);
+}
+
+/* 斜切分隔 */
+.epr-skew { transform: skewY(-2.2deg); }
+.epr-skew > .epr-unskew { transform: skewY(2.2deg); }
+
+/* 终端窗口 */
+.epr-terminal {
+  background: linear-gradient(160deg, #0d2733 0%, #081a24 100%);
+  border: 1px solid rgba(120, 200, 210, 0.22);
+  border-radius: 12px;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(78, 211, 251, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+.epr-terminal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.045) 45%, transparent 60%);
+  pointer-events: none;
+}
+.epr-perspective-wrap { perspective: 1500px; }
+.epr-terminal-3d {
+  transform: rotateY(-14deg) rotateX(6deg);
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.epr-perspective-wrap:hover .epr-terminal-3d {
+  transform: rotateY(-4deg) rotateX(2deg);
+}
+
+/* 终端行进入动画 */
+@keyframes terminal-chunk-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.epr-chunk {
+  opacity: 0;
+  animation: terminal-chunk-in 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 闪烁光标 */
+@keyframes epr-blink {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.epr-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.15em;
+  background: var(--epr-cyan);
+  vertical-align: text-bottom;
+  animation: epr-blink 1.1s step-start infinite;
+}
+
+/* 锥形渐变发光按钮 */
+.epr-btn-glow {
+  position: relative;
+  isolation: isolate;
+}
+.epr-btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(from var(--ga),
+    var(--epr-green) 0%, var(--epr-cyan) 30%, var(--epr-purple) 55%, var(--epr-gold) 80%, var(--epr-green) 100%);
+  filter: blur(18px);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.epr-btn-glow:hover::before {
+  opacity: 0.85;
+  animation: epr-spin-a 1.6s linear infinite;
+}
+@keyframes epr-spin-a {
+  from { --ga: 0deg; }
+  to { --ga: 360deg; }
+}
+.epr-btn-glow:active { transform: scale(0.96); transition: transform 75ms; }
+
+/* 模型走马灯 */
+@keyframes epr-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.epr-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: epr-marquee 36s linear infinite;
+}
+.epr-marquee-track:hover { animation-play-state: paused; }
+.epr-marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+/* 分区标题左侧色条 */
+.epr-h3-green { border-left: 2px solid #23a460; }
+.epr-h3-purple { border-left: 2px solid #b350b3; }
+.epr-h3-blue { border-left: 2px solid #0e6ebd; }
+.epr-h3-gold { border-left: 2px solid #d4a724; }
+
+/* 悬浮上浮 */
+.epr-lift { transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms, border-color 300ms; }
+.epr-lift:hover {
+  transform: translateY(-4px);
+  border-color: rgba(78, 211, 251, 0.45);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* 背景巨字 */
+.epr-ghost {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 15vw;
+  line-height: 1;
+  color: rgba(120, 200, 210, 0.05);
+  user-select: none;
+  white-space: nowrap;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* 代码块 token 配色 */
+.tok-cmd { color: #47E27C; }
+.tok-flag { color: #4ED3FB; }
+.tok-str { color: #e8c84a; }
+.tok-key { color: #b350b3; }
+.tok-dim { color: #5e7f86; }
+.tok-body { color: #cbe2e4; }
+
+/* 客户端 logo 点阵 */
+.epr-dotgrid {
+  background-image: radial-gradient(rgba(120, 200, 210, 0.18) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+::selection { background: rgba(78, 211, 251, 0.35); color: #eaffff; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--epr-bg-deep); }
+::-webkit-scrollbar-thumb { background: #1d4a5c; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #2a6a82; }
