@@ -8,7 +8,6 @@ permissions:
   pages: write
   id-token: write
 
-# 同一时间只跑一个部署，避免和旧的运行冲突
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -20,10 +19,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
       - run: npm ci
-      # 只打包、不做 TypeScript 类型检查（本地 dev 能跑的代码这里就能构建成功）
-      - run: npx vite build
+      - name: Check vite installed
+        run: |
+          node -v
+          ls node_modules/.bin/ | grep -x vite || echo "VITE-BIN-MISSING"
+      # 直接调用本地安装的 vite，不经过 npx，避免 127 错误
+      - run: ./node_modules/.bin/vite build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
