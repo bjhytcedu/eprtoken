@@ -2,13 +2,14 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// 部署地址：https://bjhytcedu.github.io/eprtoken/
+// 自定义域名部署：https://eprtoken.com/
 export default defineConfig({
   plugins: [react()],
-  base: '/eprtoken/',
+  base: '/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
 })
+
